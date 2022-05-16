@@ -2,13 +2,15 @@ import * as React from 'react';
 
 import Container from '@mui/material/Container';
 import DisplayJson from './localJson/DisplayJson';
+import FilterString from './FilterString';
 import Grid from '@mui/material/Grid';
+import Results from './Results';
 import Typography from '@mui/material/Typography';
 import UploadNeeds from './localJson/UploadNeeds';
 
 export default function MainLayout() {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ pt: 6 }}>
       <Typography
         variant="h4"
         sx={{
@@ -19,7 +21,7 @@ export default function MainLayout() {
       </Typography>
       <Grid
         container
-        spacing={2}
+        spacing={3}
         sx={{
           mt: 2
         }}
@@ -29,6 +31,18 @@ export default function MainLayout() {
         </Grid>
         <Grid item sm={12} md>
           <DisplayJson />
+        </Grid>
+        <Grid
+          item
+          sm={12}
+          sx={{
+            mt: 2
+          }}
+        >
+          <FilterString />
+        </Grid>
+        <Grid item sm={12}>
+          <Results />
         </Grid>
       </Grid>
     </Container>
