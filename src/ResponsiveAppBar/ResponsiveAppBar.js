@@ -37,13 +37,14 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar variant="dense" disableGutters>
           <OpenNeedsIcon
             sx={{
               display: { xs: 'none', md: 'flex' },
-              mr: 1
+              mr: 1,
+              height: 40
             }}
           />
           <Typography
@@ -124,7 +125,7 @@ const ResponsiveAppBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 1, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>
