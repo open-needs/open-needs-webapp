@@ -5,7 +5,6 @@ import Cards from './ResultViews/Cards';
 import PropTypes from 'prop-types';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import Typography from '@mui/material/Typography';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
