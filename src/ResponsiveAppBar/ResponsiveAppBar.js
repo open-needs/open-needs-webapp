@@ -100,7 +100,7 @@ const ResponsiveAppBar = () => {
               ))}
             </Menu>
           </Box>
-          <OpenNeedsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, height: 40 }} />
+          <OpenNeedsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, height: 30 }} />
           <Typography
             variant="h5"
             noWrap
@@ -112,7 +112,7 @@ const ResponsiveAppBar = () => {
               flexGrow: 1,
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.2rem',
               color: 'inherit',
               textDecoration: 'none'
             }}

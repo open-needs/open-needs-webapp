@@ -8,6 +8,7 @@ import * as React from 'react';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+import CssBaseline from '@mui/material/CssBaseline';
 import MainLayout from './main/MainLayout';
 import ResponsiveAppBar from './ResponsiveAppBar/ResponsiveAppBar';
 import { colorModeAtom } from './shared/atoms';
@@ -27,10 +28,12 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <ResponsiveAppBar />
-        <MainLayout />
-      </div>
+      <CssBaseline enableColorScheme>
+        <div className="App">
+          <ResponsiveAppBar />
+          <MainLayout />
+        </div>
+      </CssBaseline>
     </ThemeProvider>
   );
 }
