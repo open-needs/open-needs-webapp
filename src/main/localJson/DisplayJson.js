@@ -10,7 +10,6 @@ import { useRecoilValue } from 'recoil';
 export default function DisplayJson() {
   const colorMode = useRecoilValue(colorModeAtom);
   const needsJson = useRecoilValue(needsJsonAtom);
-  // const displayContent = needsJson ? needsJson : 'No needs.json loaded';
   return needsJson ? (
     <Paper elevation={3} sx={{ overflowY: 'auto', maxHeight: '500px' }}>
       <ReactJson
@@ -32,14 +31,4 @@ export default function DisplayJson() {
       No needs.json loaded
     </Typography>
   );
-
-  // <Paper elevation={3} sx={{ height: 200 }}>
-  //   <Box
-  //     disableGutters
-  //     component="div"
-  //     sx={{ height: 200, overflow: 'auto', pl: 1, mr: 0, ml: 0 }}
-  //   >
-  //     <JSONPretty id="json-pretty" data={displayContent}></JSONPretty>
-  //   </Box>
-  // </Paper>
 }
