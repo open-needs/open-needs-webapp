@@ -15,7 +15,9 @@
   "plugins": ["react"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "sort-imports": "error"
+    "sort-imports": "error",
+    "no-unused-vars": "warn",
+    "prettier/prettier": "warn"
   },
   "settings": {
     "react": {
