@@ -1,33 +1,36 @@
 import * as React from 'react';
 
-import Box from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
+import DisplayJson from './DisplayJson';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import UploadNeeds from './UploadNeeds';
 
 export default function MainLayout() {
   return (
-    <Box
-      sx={{
-        mt: 3,
-        maxWidth: 'lg'
-      }}
-    >
-      <Typography variant="h4">Query need items</Typography>
-      <Button
-        variant="contained"
-        component="label"
+    <Container maxWidth="xl">
+      <Typography
+        variant="h4"
         sx={{
-          width: '200px',
           mt: 3
         }}
       >
-        Upload needs.jon
-        <input type="file" accept="application/json" hidden />
-      </Button>
-      <Paper sx={{ mt: 3 }}>Item 1</Paper>
-      <Paper>Item 2</Paper>
-      <Paper>Item 3</Paper>
-    </Box>
+        Query need items
+      </Typography>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          mt: 2
+        }}
+      >
+        <Grid item pr={2}>
+          <UploadNeeds />
+        </Grid>
+        <Grid item sm={12} md>
+          <DisplayJson />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
