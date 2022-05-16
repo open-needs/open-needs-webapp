@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import Container from '@mui/material/Container';
-import DisplayJson from './DisplayJson';
+import DisplayJson from './localJson/DisplayJson';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import UploadNeeds from './UploadNeeds';
+import UploadNeeds from './localJson/UploadNeeds';
 
 export default function MainLayout() {
   return (

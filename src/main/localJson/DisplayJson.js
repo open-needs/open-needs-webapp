@@ -1,11 +1,8 @@
 import * as React from 'react';
 
-import { colorModeAtom, needsJsonAtom } from '../shared/atoms';
+import { colorModeAtom, needsJsonAtom } from '../../shared/atoms';
 
 import { Paper } from '@mui/material';
-// import Box from '@mui/material/Container';
-// import JSONPretty from 'react-json-pretty';
-// import Paper from '@mui/material/Paper';
 import ReactJson from 'react-json-view';
 import Typography from '@mui/material/Typography';
 import { useRecoilValue } from 'recoil';

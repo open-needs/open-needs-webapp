@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
-import { needsJsonAtom } from '../shared/atoms';
+import { needsJsonAtom } from '../../shared/atoms';
 import { useSetRecoilState } from 'recoil';
 
 export default function UploadNeeds() {
