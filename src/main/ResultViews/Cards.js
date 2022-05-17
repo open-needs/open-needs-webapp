@@ -7,9 +7,9 @@ import { useRecoilValue } from 'recoil';
 
 export default function Cards() {
   const needsJson = useRecoilValue(needsJsonAtom);
-  const version = '0.2.3';
   let result = [];
   if (needsJson) {
+    var version = needsJson['current_version'];
     result = Object.entries(needsJson['versions'][version]['needs']).map(([need_id, need]) => ({
       id: need_id,
       title: need['title'],
