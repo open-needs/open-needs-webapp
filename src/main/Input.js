@@ -3,11 +3,13 @@ import * as React from 'react';
 import { TabPanel, a11yProps } from './utils/TabPanel';
 
 import Box from '@mui/material/Box';
-import Cards from './ResultViews/Cards';
+import DisplayJson from './localJson/DisplayJson';
+import { Grid } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
+import UploadNeeds from './localJson/UploadNeeds';
 
-export default function Results() {
+export default function Input() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -18,20 +20,27 @@ export default function Results() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Cards" {...a11yProps(0)} />
-          <Tab label="Table" {...a11yProps(1)} disabled />
-          <Tab label="List" {...a11yProps(2)} />
-          <Tab label="Flowchart" {...a11yProps(3)} disabled />
-          <Tab label="Piechart" {...a11yProps(4)} disabled />
+          <Tab label="Local needs.json" {...a11yProps(0)} />
+          <Tab label="Remote server" {...a11yProps(1)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Cards />
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            mt: 2
+          }}
+        >
+          <Grid item pr={2}>
+            <UploadNeeds />
+          </Grid>
+          <Grid item sm={12} md>
+            <DisplayJson />
+          </Grid>
+        </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}></TabPanel>
-      <TabPanel value={value} index={2}></TabPanel>
-      <TabPanel value={value} index={3}></TabPanel>
-      <TabPanel value={value} index={4}></TabPanel>
     </Box>
   );
 }

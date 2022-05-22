@@ -1,12 +1,11 @@
 import * as React from 'react';
 
 import Container from '@mui/material/Container';
-import DisplayJson from './localJson/DisplayJson';
 import FilterString from './FilterString';
 import Grid from '@mui/material/Grid';
+import Input from './Input';
 import Results from './Results';
 import Typography from '@mui/material/Typography';
-import UploadNeeds from './localJson/UploadNeeds';
 
 export default function MainLayout() {
   return (
@@ -26,11 +25,8 @@ export default function MainLayout() {
           mt: 2
         }}
       >
-        <Grid item pr={2}>
-          <UploadNeeds />
-        </Grid>
-        <Grid item sm={12} md>
-          <DisplayJson />
+        <Grid item sm={12}>
+          <Input />
         </Grid>
         <Grid
           item
