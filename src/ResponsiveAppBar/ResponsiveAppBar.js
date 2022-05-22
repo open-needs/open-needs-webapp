@@ -15,7 +15,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 const pages = ['Query'];
-const settings = ['Profile', 'Logout'];
+const settings = ['Login', 'Profile', 'Logout'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -34,6 +34,10 @@ const ResponsiveAppBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleRightMenuClick = (event) => {
+    console.log(event);
   };
 
   return (
@@ -156,7 +160,7 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={handleRightMenuClick}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

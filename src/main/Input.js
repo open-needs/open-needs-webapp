@@ -8,9 +8,10 @@ import { Grid } from '@mui/material';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import UploadNeeds from './localJson/UploadNeeds';
+import { Wrapper } from './remote/Wrapper';
 
 export default function Input() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(1);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -40,7 +41,9 @@ export default function Input() {
           </Grid>
         </Grid>
       </TabPanel>
-      <TabPanel value={value} index={1}></TabPanel>
+      <TabPanel value={value} index={1}>
+        <Wrapper />
+      </TabPanel>
     </Box>
   );
 }

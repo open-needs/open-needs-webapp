@@ -7,6 +7,7 @@ import * as React from 'react';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+import { AuthProvider } from 'react-auth-kit';
 import CssBaseline from '@mui/material/CssBaseline';
 import MainLayout from './main/MainLayout';
 import ResponsiveAppBar from './ResponsiveAppBar/ResponsiveAppBar';
@@ -28,10 +29,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme>
-        <div className="App">
-          <ResponsiveAppBar />
-          <MainLayout />
-        </div>
+        <AuthProvider authType={'localstorage'}>
+          <div className="App">
+            <ResponsiveAppBar />
+            <MainLayout />
+          </div>
+        </AuthProvider>
       </CssBaseline>
     </ThemeProvider>
   );
