@@ -14,7 +14,6 @@ const EmailField = ({ email, setEmail, textFieldVariant = 'filled', loading, han
         variant={textFieldVariant}
         value={email.text}
         disabled={loading}
-        
         onChange={(e) => {
           setEmail({ text: e.target.value, error: '' });
         }}

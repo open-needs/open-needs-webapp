@@ -15,7 +15,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { authOpenAtom } from '../shared/atoms';
 import { useIsAuthenticated } from 'react-auth-kit';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useSignOut } from 'react-auth-kit';
 
 const pages = ['Query'];
@@ -25,7 +25,7 @@ const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  const [authOpen, setAuthOpen] = useRecoilState(authOpenAtom);
+  const setAuthOpen = useSetRecoilState(authOpenAtom);
 
   const isAuthenticated = useIsAuthenticated();
   const signOut = useSignOut();
