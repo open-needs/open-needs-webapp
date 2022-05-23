@@ -6,7 +6,13 @@ import LockIcon from '@mui/icons-material/Lock';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-const PasswordField = ({ password, setPassword, textFieldVariant = 'filled', loading }) => {
+const PasswordField = ({
+  password,
+  setPassword,
+  textFieldVariant = 'filled',
+  loading,
+  handleSubmit
+}) => {
   const [showPassword, setShowPassword] = React.useState(false);
   const tooglePassword = () => {
     setShowPassword(!showPassword);
@@ -22,6 +28,12 @@ const PasswordField = ({ password, setPassword, textFieldVariant = 'filled', loa
         disabled={loading}
         onChange={(e) => {
           setPassword({ text: e.target.value, error: '' });
+        }}
+        onKeyPress={(ev) => {
+          if (ev.key === 'Enter') {
+            ev.preventDefault();
+            handleSubmit();
+          }
         }}
         type={!showPassword ? 'password' : 'text'}
         InputProps={{

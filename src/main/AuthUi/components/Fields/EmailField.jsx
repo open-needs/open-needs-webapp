@@ -3,7 +3,8 @@ import * as React from 'react';
 import { FormControl, FormHelperText, InputAdornment, TextField } from '@mui/material';
 
 import EmailIcon from '@mui/icons-material/Email';
-const EmailField = ({ email, setEmail, textFieldVariant = 'filled', loading }) => {
+
+const EmailField = ({ email, setEmail, textFieldVariant = 'filled', loading, handleSubmit }) => {
   return (
     <FormControl margin="none" fullWidth error={Boolean(email.error)}>
       <TextField
@@ -15,6 +16,12 @@ const EmailField = ({ email, setEmail, textFieldVariant = 'filled', loading }) =
         disabled={loading}
         onChange={(e) => {
           setEmail({ text: e.target.value, error: '' });
+        }}
+        onKeyPress={(ev) => {
+          if (ev.key === 'Enter') {
+            ev.preventDefault();
+            handleSubmit();
+          }
         }}
         type={'email'}
         InputProps={{

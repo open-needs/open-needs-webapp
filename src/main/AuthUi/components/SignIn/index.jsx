@@ -67,8 +67,8 @@ const SignIn = ({
   }, [email, password]);
   return (
     <Box p={2}>
-      <EmailField {...{ email, setEmail, textFieldVariant, loading }} />
-      <PasswordField {...{ password, setPassword, textFieldVariant, loading }} />
+      <EmailField {...{ email, setEmail, textFieldVariant, loading, handleSubmit }} />
+      <PasswordField {...{ password, setPassword, textFieldVariant, loading, handleSubmit }} />
 
       <Typography
         variant="body2"
