@@ -3,12 +3,13 @@ import * as React from 'react';
 import { FormControl, FormHelperText, InputAdornment, TextField } from '@mui/material';
 
 import PersonIcon from '@mui/icons-material/Person';
+
 const NameField = ({ name, setName, textFieldVariant = 'filled', loading }) => {
   return (
     <FormControl margin="none" fullWidth error={Boolean(name?.error)}>
       <TextField
         placeholder={textFieldVariant === 'outlined' ? 'Name' : ''}
-        label={textFieldVariant !== 'outlined' && 'Name'}
+        label={textFieldVariant === 'outlined' ? null : 'Name'}
         error={Boolean(name?.error)}
         variant={textFieldVariant}
         value={name?.text}

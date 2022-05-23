@@ -21,7 +21,7 @@ const PasswordField = ({
     <FormControl margin="none" fullWidth error={Boolean(password.error)}>
       <TextField
         placeholder={textFieldVariant === 'outlined' ? 'Password' : ''}
-        label={textFieldVariant !== 'outlined' && 'Password'}
+        label={textFieldVariant === 'outlined' ? null : 'Password'}
         error={Boolean(password.error)}
         variant={textFieldVariant}
         value={password.text}

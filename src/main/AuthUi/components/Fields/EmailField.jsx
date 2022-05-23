@@ -9,11 +9,12 @@ const EmailField = ({ email, setEmail, textFieldVariant = 'filled', loading, han
     <FormControl margin="none" fullWidth error={Boolean(email.error)}>
       <TextField
         placeholder={textFieldVariant === 'outlined' ? 'Email' : ''}
-        label={textFieldVariant !== 'outlined' && 'Email'}
+        label={textFieldVariant === 'outlined' ? null : 'Email'}
         error={Boolean(email.error)}
         variant={textFieldVariant}
         value={email.text}
         disabled={loading}
+        
         onChange={(e) => {
           setEmail({ text: e.target.value, error: '' });
         }}
