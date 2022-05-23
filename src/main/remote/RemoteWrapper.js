@@ -43,11 +43,9 @@ export function RemoteWrapper() {
             setAuthOpen(false);
             setError(null);
             setShowErrorMessage(false);
-            console.log('Signed in');
             // Only if you are using refreshToken feature
             // Redirect or do-something
           } else {
-            console.log('Error signing in');
             //Throw error
           }
         }
