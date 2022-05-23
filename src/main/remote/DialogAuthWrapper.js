@@ -8,7 +8,8 @@ export default function DialogAuthWrapper({ handleSignIn, ...props }) {
   const [authOpen, setAuthOpen] = useRecoilState(authOpenAtom);
   const setShowErrorMessage = useSetRecoilState(showErrorMessageAtom);
 
-  const handleClose = () => {
+  const handleClose = (event, reason) => {
+    if (reason && reason == 'backdropClick') return;
     setAuthOpen(false);
     setShowErrorMessage(false);
   };
