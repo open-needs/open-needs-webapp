@@ -13,13 +13,22 @@ import MenuItem from '@mui/material/MenuItem';
 import OpenNeedsIcon from './OpenNeedsIcon';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { authOpenAtom } from '../shared/atoms';
+import { useIsAuthenticated } from 'react-auth-kit';
+import { useRecoilState } from 'recoil';
+import { useSignOut } from 'react-auth-kit';
 
 const pages = ['Query'];
-const settings = ['Login', 'Profile', 'Logout'];
+const settings = ['Profile', 'Logout'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const [authOpen, setAuthOpen] = useRecoilState(authOpenAtom);
+
+  const isAuthenticated = useIsAuthenticated();
+  const signOut = useSignOut();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -37,7 +46,17 @@ const ResponsiveAppBar = () => {
   };
 
   const handleRightMenuClick = (event) => {
-    console.log(event);
+    if (event.target.textContent === 'Profile') {
+      console.log('Clicked on Profile');
+    }
+    if (event.target.textContent === 'Logout') {
+      signOut();
+    }
+    handleCloseUserMenu();
+  };
+
+  const handleSignInButton = () => {
+    setAuthOpen(true);
   };
 
   return (
@@ -140,31 +159,44 @@ const ResponsiveAppBar = () => {
             <ColorModeSwitch />
           </Box>
           <Box sx={{ ml: 2, flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} size="small" sx={{ p: 0 }}>
-              <Avatar src="/broken-image.jpg" />
-            </IconButton>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right'
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleRightMenuClick}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            {isAuthenticated() ? (
+              <>
+                <IconButton onClick={handleOpenUserMenu} size="small" sx={{ p: 0 }}>
+                  <Avatar sx={{ width: 30, height: 30 }} src="/broken-image.jpg" />
+                </IconButton>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleRightMenuClick}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </>
+            ) : (
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                onClick={handleSignInButton}
+              >
+                Sign in
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </Container>

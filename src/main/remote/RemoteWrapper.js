@@ -1,4 +1,4 @@
-import { Alert, Button, Snackbar, Typography } from '@mui/material';
+import { Alert, Box, Button, Snackbar, Typography } from '@mui/material';
 import { authOpenAtom, showErrorMessageAtom } from '../../shared/atoms';
 
 import DialogAuthWrapper from './DialogAuthWrapper';
@@ -65,13 +65,19 @@ export function RemoteWrapper() {
 
   return (
     <>
-      {isAuthenticated() ? (
-        <Typography>Signed in</Typography>
-      ) : (
-        <Button variant="contained" onClick={handleSignInButton}>
-          Sign in
-        </Button>
-      )}
+      <Box
+        sx={{
+          mt: 3
+        }}
+      >
+        {isAuthenticated() ? (
+          <Typography>Signed in</Typography>
+        ) : (
+          <Button variant="contained" color="secondary" onClick={handleSignInButton}>
+            Sign in
+          </Button>
+        )}
+      </Box>
 
       {error && showErrorMessage ? (
         <Snackbar open={true} autoHideDuration={6000}>

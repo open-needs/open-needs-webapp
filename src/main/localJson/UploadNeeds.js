@@ -18,7 +18,7 @@ export default function UploadNeeds() {
     reader.readAsText(event.target.files[0]);
   };
   return (
-    <Button variant="contained" component="label">
+    <Button variant="contained" color="secondary" component="label">
       Upload needs.jon
       <input type="file" accept="application/json" hidden onChange={handleUpload} />
     </Button>
