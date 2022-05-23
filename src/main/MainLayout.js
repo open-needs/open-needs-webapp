@@ -3,7 +3,7 @@ import * as React from 'react';
 import Container from '@mui/material/Container';
 import FilterString from './FilterString';
 import Grid from '@mui/material/Grid';
-import Input from './Input';
+import NeedsInput from './NeedsInput';
 import Results from './Results';
 import Typography from '@mui/material/Typography';
 
@@ -26,7 +26,7 @@ export default function MainLayout() {
         }}
       >
         <Grid item sm={12}>
-          <Input />
+          <NeedsInput />
         </Grid>
         <Grid
           item

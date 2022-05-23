@@ -1,14 +1,15 @@
 import * as React from 'react';
 
 import { Card, CardContent, Grid, Typography } from '@mui/material';
+import { isRemoteAtom, needsJsonAtom } from '../../shared/atoms';
 
-import { needsJsonAtom } from '../../shared/atoms';
 import { useRecoilValue } from 'recoil';
 
 export default function Cards() {
   const needsJson = useRecoilValue(needsJsonAtom);
+  const isRemote = useRecoilValue(isRemoteAtom);
   let result = [];
-  if (needsJson) {
+  if (needsJson && !isRemote) {
     var version = needsJson['current_version'];
     result = Object.entries(needsJson['versions'][version]['needs']).map(([need_id, need]) => ({
       id: need_id,

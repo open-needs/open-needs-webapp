@@ -14,10 +14,11 @@
   },
   "plugins": ["react"],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "sort-imports": "error",
     "no-unused-vars": "warn",
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "sort-imports": "error"
   },
   "settings": {
     "react": {

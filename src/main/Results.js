@@ -20,7 +20,7 @@ export default function Results() {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Cards" {...a11yProps(0)} />
           <Tab label="Table" {...a11yProps(1)} disabled />
-          <Tab label="List" {...a11yProps(2)} />
+          <Tab label="List" {...a11yProps(2)} disabled />
           <Tab label="Flowchart" {...a11yProps(3)} disabled />
           <Tab label="Piechart" {...a11yProps(4)} disabled />
         </Tabs>

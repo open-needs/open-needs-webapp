@@ -13,3 +13,18 @@ export const needsJsonAtom = atom({
   key: 'needsJson',
   default: undefined
 });
+
+export const authOpenAtom = atom({
+  key: 'authOpen',
+  default: false
+});
+
+export const isRemoteAtom = atom({
+  key: 'isRemote',
+  default: false
+});
+
+export const showErrorMessageAtom = atom({
+  key: 'showErrorMessage',
+  default: null
+});

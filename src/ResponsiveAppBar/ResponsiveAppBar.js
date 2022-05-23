@@ -140,7 +140,7 @@ const ResponsiveAppBar = () => {
             <ColorModeSwitch />
           </Box>
           <Box sx={{ ml: 2, flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+            <IconButton onClick={handleOpenUserMenu} size="small" sx={{ p: 0 }}>
               <Avatar src="/broken-image.jpg" />
             </IconButton>
             <Menu
