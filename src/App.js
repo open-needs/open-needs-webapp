@@ -32,11 +32,11 @@ function App() {
   );
 
   return (
-    <BrowserRouter basename={prodUrlPrefix}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline enableColorScheme>
-          <SnackbarProvider maxSnack={3}>
-            <AuthProvider authType={'localstorage'}>
+    <AuthProvider authType={'localstorage'} authName={'_auth'}>
+      <BrowserRouter basename={prodUrlPrefix}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline enableColorScheme>
+            <SnackbarProvider maxSnack={3}>
               <div className="App">
                 <ResponsiveAppBar />
                 <Routes>
@@ -46,11 +46,11 @@ function App() {
                   <Route path="*" element={<Navigate to="/QueryNeeds" replace />} />
                 </Routes>
               </div>
-            </AuthProvider>
-          </SnackbarProvider>
-        </CssBaseline>
-      </ThemeProvider>
-    </BrowserRouter>
+            </SnackbarProvider>
+          </CssBaseline>
+        </ThemeProvider>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
