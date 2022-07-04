@@ -22,8 +22,8 @@ export const submitAuthentication = (
           signIn({
             token: res.data.access_token,
             expiresIn: exp,
-            tokenType: 'Bearer'
-            //   authState: 'signed_in'
+            tokenType: 'Bearer',
+            authState: 'signed_in'
             // refreshToken: res.data.refreshToken, // Only if you are using refreshToken feature
             // refreshTokenExpireIn: res.data.refreshTokenExpireIn
           })
