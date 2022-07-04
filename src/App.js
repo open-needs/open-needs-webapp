@@ -16,6 +16,7 @@ import ResponsiveAppBar from './ResponsiveAppBar/ResponsiveAppBar';
 import Settings from './main/Settings/Settings';
 import { SnackbarProvider } from 'notistack';
 import { colorModeAtom } from './shared/atoms';
+import { prodUrlPrefix } from './shared/constants';
 import { useRecoilValue } from 'recoil';
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
   );
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={prodUrlPrefix}>
       <ThemeProvider theme={theme}>
         <CssBaseline enableColorScheme>
           <SnackbarProvider maxSnack={3}>
