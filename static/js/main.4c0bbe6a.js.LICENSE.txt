@@ -6,6 +6,8 @@ object-assign
 
 /*! js-cookie v3.0.1 | MIT */
 
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
 /**
  * React Router DOM v6.3.0
  *
@@ -49,7 +51,7 @@ object-assign
  * limitations under the License.
  */
 
-/** @license MUI v5.7.0
+/** @license MUI v5.8.0
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
