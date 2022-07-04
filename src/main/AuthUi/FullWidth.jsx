@@ -1,8 +1,7 @@
-import * as React from 'react';
-
 import { Box, Container, Grid, Typography } from '@mui/material';
 
 import TabAuth from './components/Tab';
+
 const FullWidthAuth = ({ ...props }) => {
   return (
     <Box p={9}>
@@ -11,7 +10,7 @@ const FullWidthAuth = ({ ...props }) => {
           <Grid container spacing={1}>
             <Grid item xs={false} md={7}>
               <Typography variant="h4" color="textSecondary">
-                <b>Welcome</b>
+                {props.welcomeComponent ? props.welcomeComponent : <b>Welcome</b>}
               </Typography>
             </Grid>
             <Grid item xs={12} md={5}>

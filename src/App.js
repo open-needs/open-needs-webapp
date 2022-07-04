@@ -5,12 +5,16 @@ import '@fontsource/roboto/700.css';
 
 import * as React from 'react';
 
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { AuthProvider } from 'react-auth-kit';
 import CssBaseline from '@mui/material/CssBaseline';
-import MainLayout from './main/MainLayout';
+import FullWidthAuthWrapper from './main/remote/FullWidthAuthWrapper';
+import QueryNeeds from './main/QueryNeeds';
 import ResponsiveAppBar from './ResponsiveAppBar/ResponsiveAppBar';
+import Settings from './main/Settings/Settings';
+import { SnackbarProvider } from 'notistack';
 import { colorModeAtom } from './shared/atoms';
 import { useRecoilValue } from 'recoil';
 
@@ -27,16 +31,25 @@ function App() {
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline enableColorScheme>
-        <AuthProvider authType={'localstorage'}>
-          <div className="App">
-            <ResponsiveAppBar />
-            <MainLayout />
-          </div>
-        </AuthProvider>
-      </CssBaseline>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline enableColorScheme>
+          <SnackbarProvider maxSnack={3}>
+            <AuthProvider authType={'localstorage'}>
+              <div className="App">
+                <ResponsiveAppBar />
+                <Routes>
+                  <Route path="/Auth" element={<FullWidthAuthWrapper />} />
+                  <Route path="/QueryNeeds" element={<QueryNeeds />} />
+                  <Route path="/Settings" element={<Settings />} />
+                  <Route path="*" element={<Navigate to="/QueryNeeds" replace />} />
+                </Routes>
+              </div>
+            </AuthProvider>
+          </SnackbarProvider>
+        </CssBaseline>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

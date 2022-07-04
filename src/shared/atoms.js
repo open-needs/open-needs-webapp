@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { be_server } from './constants';
 import { recoilPersist } from 'recoil-persist';
 
 const { persistAtom } = recoilPersist({ key: 'persist' });
@@ -27,4 +28,10 @@ export const isRemoteAtom = atom({
 export const showErrorMessageAtom = atom({
   key: 'showErrorMessage',
   default: null
+});
+
+export const remoteBaseUrlAtom = atom({
+  key: 'remoteBaseUrl',
+  default: be_server,
+  effects_UNSTABLE: [persistAtom]
 });

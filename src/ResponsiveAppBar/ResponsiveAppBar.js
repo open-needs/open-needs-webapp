@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { useIsAuthenticated, useSignOut } from 'react-auth-kit';
+
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -7,25 +9,23 @@ import Button from '@mui/material/Button';
 import ColorModeSwitch from './ColorModeSwitch';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
+import { Link } from 'react-router-dom';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import OpenNeedsIcon from './OpenNeedsIcon';
+import SettingsIcon from '@mui/icons-material/Settings';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { authOpenAtom } from '../shared/atoms';
-import { useIsAuthenticated } from 'react-auth-kit';
-import { useSetRecoilState } from 'recoil';
-import { useSignOut } from 'react-auth-kit';
+import { grey } from '@mui/material/colors';
 
-const pages = ['Query'];
+// map page names in the title bar to React Router target names
+const pages = { Query: '/QueryNeeds' };
 const settings = ['Profile', 'Logout'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const setAuthOpen = useSetRecoilState(authOpenAtom);
 
   const isAuthenticated = useIsAuthenticated();
   const signOut = useSignOut();
@@ -53,10 +53,6 @@ const ResponsiveAppBar = () => {
       signOut();
     }
     handleCloseUserMenu();
-  };
-
-  const handleSignInButton = () => {
-    setAuthOpen(true);
   };
 
   return (
@@ -117,9 +113,9 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' }
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {Object.entries(pages).map(([text, target]) => (
+                <MenuItem key={text} component={Link} to={target} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{text}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -144,10 +140,12 @@ const ResponsiveAppBar = () => {
             Open-Needs
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {Object.entries(pages).map(([page, target]) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                component={Link}
+                to={target}
+                // onClick={handleCloseNavMenu}
                 sx={{ my: 1, color: 'white', display: 'block' }}
               >
                 {page}
@@ -155,6 +153,11 @@ const ResponsiveAppBar = () => {
             ))}
           </Box>
 
+          <Box sx={{ flexGrow: 0 }}>
+            <IconButton component={Link} to="/Settings">
+              <SettingsIcon sx={{ color: grey[50] }} />
+            </IconButton>
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <ColorModeSwitch />
           </Box>
@@ -192,7 +195,8 @@ const ResponsiveAppBar = () => {
                 variant="contained"
                 color="secondary"
                 size="small"
-                onClick={handleSignInButton}
+                component={Link}
+                to="/Auth"
               >
                 Sign in
               </Button>

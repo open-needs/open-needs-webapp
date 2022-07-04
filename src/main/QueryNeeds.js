@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import Container from '@mui/material/Container';
 import FilterString from './FilterString';
 import Grid from '@mui/material/Grid';
@@ -7,17 +5,10 @@ import NeedsInput from './NeedsInput';
 import Results from './Results';
 import Typography from '@mui/material/Typography';
 
-export default function MainLayout() {
+export default function QueryNeeds() {
   return (
-    <Container maxWidth="xl" sx={{ pt: 6 }}>
-      <Typography
-        variant="h4"
-        sx={{
-          mt: 3
-        }}
-      >
-        Query need items
-      </Typography>
+    <Container maxWidth="xl" sx={{ pt: 9 }}>
+      <Typography variant="h4">Query need items</Typography>
       <Grid
         container
         spacing={3}

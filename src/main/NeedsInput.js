@@ -1,18 +1,21 @@
 import * as React from 'react';
 
+import { Button, Grid, Typography } from '@mui/material';
 import { TabPanel, a11yProps } from './utils/TabPanel';
 
 import Box from '@mui/material/Box';
 import DisplayJson from './localJson/DisplayJson';
-import { Grid } from '@mui/material';
-import { RemoteWrapper } from './remote/RemoteWrapper';
+import { Link } from 'react-router-dom';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import UploadNeeds from './localJson/UploadNeeds';
 import { isRemoteAtom } from '../shared/atoms';
+import { useIsAuthenticated } from 'react-auth-kit';
 import { useSetRecoilState } from 'recoil';
 
 export default function NeedsInput() {
+  const isAuthenticated = useIsAuthenticated();
+
   const [value, setValue] = React.useState(1);
   const setIsRemote = useSetRecoilState(isRemoteAtom);
   const handleChange = (event, newValue) => {
@@ -45,7 +48,13 @@ export default function NeedsInput() {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <RemoteWrapper />
+        {isAuthenticated() ? (
+          <Typography>Signed in</Typography>
+        ) : (
+          <Button variant="contained" color="secondary" size="small" component={Link} to="/Auth">
+            Sign in
+          </Button>
+        )}
       </TabPanel>
     </Box>
   );
