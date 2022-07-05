@@ -1,10 +1,11 @@
 import * as React from 'react';
 
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { TabPanel, a11yProps } from './utils/TabPanel';
 
 import Box from '@mui/material/Box';
 import DisplayJson from './localJson/DisplayJson';
+import Editor from '@monaco-editor/react';
 import { Link } from 'react-router-dom';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
@@ -12,9 +13,11 @@ import UploadNeeds from './localJson/UploadNeeds';
 import { isRemoteAtom } from '../shared/atoms';
 import { useIsAuthenticated } from 'react-auth-kit';
 import { useSetRecoilState } from 'recoil';
+import { useTheme } from '@emotion/react';
 
 export default function NeedsInput() {
   const isAuthenticated = useIsAuthenticated();
+  const theme = useTheme();
 
   const [value, setValue] = React.useState(1);
   const setIsRemote = useSetRecoilState(isRemoteAtom);
@@ -49,7 +52,16 @@ export default function NeedsInput() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         {isAuthenticated() ? (
-          <Typography>Signed in</Typography>
+          <Editor
+            height="30vh"
+            defaultLanguage="restructuredtext"
+            theme={theme.palette.mode === 'dark' ? 'vs-dark' : 'light'}
+            defaultValue={`
+.. warn:: A warning to you!
+
+This is **bold** and *italic* text.
+          `}
+          />
         ) : (
           <Button variant="contained" color="secondary" size="small" component={Link} to="/Auth">
             Sign in
