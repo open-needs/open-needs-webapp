@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Container, Grid, Paper, Typography } from '@mui/material';
 
 import TabAuth from './components/Tab';
 
@@ -6,7 +6,7 @@ const FullWidthAuth = ({ ...props }) => {
   return (
     <Box p={9}>
       <Container maxWidth="md">
-        <Box boxShadow="0px 0px 10px 3px #ddd" p={3} width="100%" height="100%">
+        <Paper elevation={3} sx={{ p: 3, width: '100%', height: '100%' }}>
           <Grid container spacing={1}>
             <Grid item xs={false} md={7}>
               {props.welcomeComponent ? (
@@ -21,7 +21,7 @@ const FullWidthAuth = ({ ...props }) => {
               <TabAuth {...props} />
             </Grid>
           </Grid>
-        </Box>
+        </Paper>
       </Container>
     </Box>
   );
