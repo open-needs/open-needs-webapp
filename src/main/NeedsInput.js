@@ -25,7 +25,10 @@ export default function NeedsInput() {
     setValue(newValue);
     setIsRemote(newValue === 1);
   };
-
+  const options = {
+    readOnly: true,
+    minimap: { enabled: false }
+  };
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -56,11 +59,12 @@ export default function NeedsInput() {
             height="30vh"
             defaultLanguage="restructuredtext"
             theme={theme.palette.mode === 'dark' ? 'vs-dark' : 'light'}
+            options={options}
             defaultValue={`
 .. warn:: A warning to you!
 
 This is **bold** and *italic* text.
-          `}
+`}
           />
         ) : (
           <Button variant="contained" color="secondary" size="small" component={Link} to="/Auth">
