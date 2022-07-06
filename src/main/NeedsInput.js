@@ -22,7 +22,6 @@ export default function NeedsInput() {
     setValue(newValue);
     setIsRemote(newValue === 1);
   };
-
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -49,7 +48,7 @@ export default function NeedsInput() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         {isAuthenticated() ? (
-          <Typography>Signed in</Typography>
+          <Typography>Logged in (feature coming soon)</Typography>
         ) : (
           <Button variant="contained" color="secondary" size="small" component={Link} to="/Auth">
             Sign in
