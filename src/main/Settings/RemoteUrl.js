@@ -1,4 +1,4 @@
-import { Badge, TextField, Tooltip } from '@mui/material';
+import { Badge, TextField, Tooltip, Typography } from '@mui/material';
 
 import { be_server } from '../../shared/constants';
 import { remoteBaseUrlAtom } from '../../shared/atoms';
@@ -23,7 +23,7 @@ export default function RemoteUrl() {
       sx={{ cursor: 'default' }}
       badgeContent={
         <Tooltip title="Log out to change" placement="right-start">
-          <span>?</span>
+          <Typography>?</Typography>
         </Tooltip>
       }
       color="error"
