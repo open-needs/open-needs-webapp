@@ -13,11 +13,7 @@ export default function Cards() {
   let result = [];
   if (needsJson && !isRemote) {
     var version = needsJson['current_version'];
-    result = Object.entries(needsJson['versions'][version]['needs']).map(([need_id, need]) => ({
-      id: need_id,
-      title: need['title'],
-      links: need['links']
-    }));
+    result = Object.values(needsJson['versions'][version]['needs']);
   }
 
   return (
@@ -36,22 +32,53 @@ function SingleCard(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const options = {
+  const monacoOptions = {
     readOnly: true,
     minimap: { enabled: false },
-    wordWrap: 'on'
+    wordWrap: 'bounded',
+    wordWrapColumn: 120
   };
   const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '800px',
-    height: '40vh',
+    minWidth: '1100px',
+    // width: '80%',
+    height: '40%',
+    minHeight: '200px',
     bgcolor: 'background.paper',
     boxShadow: 24,
     pt: 1
   };
+  const need = props.need; // short hand
+  const needIgnoreOptions = [
+    'description', // handled at the end (last after options)
+    'docname',
+    'full_title',
+    'hide_links',
+    'id', // handled at the beginning (first in options)
+    'is_need',
+    'is_part',
+    'parts',
+    'section_name',
+    'sections',
+    'title_from_content',
+    'title', // handled in the first line
+    'type_name',
+    'type' // handled in the first line
+  ];
+  let needString = `.. ${need.type}:: ${need.title}`;
+  needString += `\n   :id: ${need.id}`;
+  Object.entries(need).forEach(function ([key, value]) {
+    // value.length works for both string and array options
+    if (!needIgnoreOptions.includes(key) && value && value.length > 0) {
+      const finalValue =
+        Object.prototype.toString.call(value) === '[object Array]' ? value.join(', ') : value;
+      needString += `\n   :${key}: ${finalValue}`;
+    }
+  });
+  needString += '\n\n   ' + need.description.split('\n').join('\n   ');
   return (
     <>
       <Card onClick={handleOpen}>
@@ -76,12 +103,8 @@ function SingleCard(props) {
             width="100%"
             defaultLanguage="restructuredtext"
             theme={theme.palette.mode === 'dark' ? 'vs-dark' : 'light'}
-            options={options}
-            defaultValue={`
-.. warn:: A warning to you!
-
-This is **bold** and *italic* text. This is **bold** and *italic* text.This is **bold** and *italic* text. This is **bold** and *italic* text.
-`}
+            options={monacoOptions}
+            defaultValue={needString}
           />
         </Box>
       </Modal>
