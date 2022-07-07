@@ -2,6 +2,14 @@
   "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
   "editor.formatOnSave": true,
   "eslint.alwaysShowStatus": true,
-  "files.autoSave": "onFocusChange",
-  "sort-imports.on-save": true
+  "files.autoSave": "afterDelay",
+  "sort-imports.on-save": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/build": true
+  }
 }
