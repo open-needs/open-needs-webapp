@@ -44,7 +44,6 @@ function SingleCard(props) {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     minWidth: '1100px',
-    // width: '80%',
     height: '40%',
     minHeight: '200px',
     bgcolor: 'background.paper',

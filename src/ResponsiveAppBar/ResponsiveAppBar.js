@@ -50,6 +50,12 @@ const ResponsiveAppBar = () => {
       console.log('Clicked on Profile');
     }
     if (event.target.textContent === 'Logout') {
+      // this deletes the local storage JWT token, thus making it unavailable to the application;
+      // no need to POST to the server as the strategy used is JWT
+      // see https://fastapi-users.github.io/fastapi-users/10.1/configuration/authentication/strategies/jwt/#logout
+      // in case the server side strategy changes to database in future, a POST request to
+      // /auth/jwt/logout is needed which will delete the token on the server DB
+      // see https://fastapi-users.github.io/fastapi-users/10.1/configuration/authentication/strategies/database/#logout
       signOut();
     }
     handleCloseUserMenu();
