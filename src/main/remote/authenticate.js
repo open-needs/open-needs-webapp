@@ -18,10 +18,14 @@ export const submitAuthentication = (
     .then((res) => {
       if (res.status === 200) {
         const { exp } = jwt_decode(res.data.access_token);
+        const expiryDate = new Date(exp * 1000);
+        const now = new Date();
+        var diffMs = expiryDate - now;
+        var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
         if (
           signIn({
             token: res.data.access_token,
-            expiresIn: exp,
+            expiresIn: diffMins,
             tokenType: 'Bearer',
             authState: 'signed_in'
             // refreshToken: res.data.refreshToken, // Only if you are using refreshToken feature
