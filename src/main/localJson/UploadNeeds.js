@@ -1,10 +1,8 @@
-import * as React from 'react';
-
 import Button from '@mui/material/Button';
 import { needsJsonAtom } from '../../shared/atoms';
 import { useSetRecoilState } from 'recoil';
 
-export default function UploadNeeds() {
+export default function UploadLocalNeedsJson() {
   const setNeedsJson = useSetRecoilState(needsJsonAtom);
   const handleUpload = (event) => {
     const reader = new FileReader();

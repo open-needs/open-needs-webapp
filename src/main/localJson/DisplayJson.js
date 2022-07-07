@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { colorModeAtom, needsJsonAtom } from '../../shared/atoms';
 
 import { Paper } from '@mui/material';
@@ -7,7 +5,7 @@ import ReactJson from 'react-json-view';
 import Typography from '@mui/material/Typography';
 import { useRecoilValue } from 'recoil';
 
-export default function DisplayJson() {
+export default function DisplayLocalNeedsJson() {
   const colorMode = useRecoilValue(colorModeAtom);
   const needsJson = useRecoilValue(needsJsonAtom);
   return needsJson ? (

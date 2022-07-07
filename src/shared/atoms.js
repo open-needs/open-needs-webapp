@@ -23,7 +23,12 @@ export const needsJsonAtom = atom({
   default: undefined
 });
 
+export const remoteNeedsAtom = atom({
+  key: 'remoteNeeds',
+  default: undefined
+});
+
 export const isRemoteAtom = atom({
   key: 'isRemote',
-  default: false
+  default: true
 });
