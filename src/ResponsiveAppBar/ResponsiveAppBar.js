@@ -21,7 +21,7 @@ import { grey } from '@mui/material/colors';
 
 // map page names in the title bar to React Router target names
 const pages = { Query: '/QueryNeeds' };
-const settings = ['Profile', 'Logout'];
+const settings = ['Profile (coming soon)', 'Logout'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
