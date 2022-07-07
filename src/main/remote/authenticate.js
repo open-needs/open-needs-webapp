@@ -17,6 +17,11 @@ export const submitAuthentication = (
     .post(`${baseUrl}/auth/jwt/login`, params)
     .then((res) => {
       if (res.status === 200) {
+        // react auth kit requires the token expiration date in minutes from now
+        // this makes sense as the exp field of a JWT is not mandatory and the information might
+        // be provided as a separated field by an auth endpoint; FastAPI-Users includes the exp
+        // field in the token (default is 60 minutes) and it will be used to calculate the
+        // expiration minutes from now by substracting the current date
         const { exp } = jwt_decode(res.data.access_token);
         const expiryDate = new Date(exp * 1000);
         const now = new Date();
@@ -25,7 +30,7 @@ export const submitAuthentication = (
         if (
           signIn({
             token: res.data.access_token,
-            expiresIn: diffMins,
+            expiresIn: diffMins, // given in minutes from now
             tokenType: 'Bearer',
             authState: 'signed_in'
             // refreshToken: res.data.refreshToken, // Only if you are using refreshToken feature
