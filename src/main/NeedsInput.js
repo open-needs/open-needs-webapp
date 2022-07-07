@@ -68,7 +68,7 @@ export default function NeedsInput() {
       <TabPanel value={value} index={0}>
         <Grid
           container
-          spacing={3}
+          spacing={2}
           sx={{
             mt: 0
           }}
@@ -82,15 +82,17 @@ export default function NeedsInput() {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {isAuthenticated() ? (
-          <Button variant="contained" color="secondary" size="small" onClick={remoteNeedsQuery}>
-            Start query
-          </Button>
-        ) : (
-          <Button variant="contained" color="secondary" size="small" component={Link} to="/Auth">
-            Sign in
-          </Button>
-        )}
+        <Box pt={2}>
+          {isAuthenticated() ? (
+            <Button variant="contained" color="secondary" onClick={remoteNeedsQuery}>
+              Start query
+            </Button>
+          ) : (
+            <Button variant="contained" color="secondary" component={Link} to="/Auth">
+              Sign in
+            </Button>
+          )}
+        </Box>
       </TabPanel>
     </Box>
   );
