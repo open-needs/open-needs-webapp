@@ -13,7 +13,7 @@ export default function Cards() {
   let result = [];
   if (needsJson && !isRemote) {
     var version = needsJson['current_version'];
-    result = needsJson['versions'][version]['needs'];
+    result = Object.values(needsJson['versions'][version]['needs']);
   }
 
   return (
