@@ -104,10 +104,10 @@ function SingleCard(props) {
       <Card onClick={handleOpen}>
         <CardContent>
           <Typography variant="body2" fontWeight={500}>
-            {props.need.id}
+            {isRemote ? need.key : need.id}
           </Typography>
           <Typography sx={{ mt: 1 }} color="text.secondary">
-            {props.need.title}
+            {need.title}
           </Typography>
         </CardContent>
       </Card>
