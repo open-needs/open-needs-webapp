@@ -52,6 +52,9 @@ function SingleCard(props) {
     pt: 1
   };
   const need = props.need; // short hand
+  // define need options that
+  // 1. should not show up in the target RST
+  // 2. are handled specially/manually
   const needIgnoreOptions = [
     'description', // handled at the end (last after options)
     'docname',
