@@ -13,8 +13,9 @@ export const submitAuthentication = (
   const params = new URLSearchParams();
   params.append('username', email);
   params.append('password', password);
+  const loginEndpoint = `${baseUrl}/auth/jwt/login`;
   axios
-    .post(`${baseUrl}/auth/jwt/login`, params)
+    .post(loginEndpoint, params)
     .then((res) => {
       if (res.status === 200) {
         // react auth kit requires the token expiration date in minutes from now
@@ -56,7 +57,9 @@ export const submitAuthentication = (
       if (err.response.status === 400 && err.response.data.detail === 'LOGIN_BAD_CREDENTIALS') {
         enqueueSnackbar('Bad credentials', { variant: 'error' });
       } else {
-        enqueueSnackbar(`Unknown error occurred ${err}`, { variant: 'error' });
+        enqueueSnackbar(`${err.message}: Cannot authenticate against ${loginEndpoint}`, {
+          variant: 'error'
+        });
       }
     });
 };
